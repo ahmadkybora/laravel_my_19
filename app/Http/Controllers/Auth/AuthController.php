@@ -17,19 +17,20 @@ class AuthController extends Controller
             'password' => $request->input('password')]))
         {
             $user = $request->user();
+            //dd($user);
             $tokenResult = $user->createToken('Api Token');
-            $token = $tokenResult->token;
-            $token->save();
+            // $token = $tokenResult->plainTextToken;
+            // $token->save();
 
             return response()->json([
                 'state' => true,
                 'message' => 'you are logged in.',
                 'data' => [
-                    'token' => $tokenResult->accessToken,
+                    'token' => $tokenResult,
                     'token_type' => 'Bearer',
                     'username' => $user->username,
-                    'first_name' => $user->first_name,
-                    'last_name' => $user->last_name,
+                    'first_name' => $user->firstName,
+                    'last_name' => $user->lastName,
                 ],
             ], 200);
         }

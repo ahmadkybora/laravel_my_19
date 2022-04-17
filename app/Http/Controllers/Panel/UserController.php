@@ -20,7 +20,7 @@ class UserController extends Controller
             return response()->json([
                 'state' => true,
                 'message' => 'success!',
-                'data' => User::all(['id', 'first_name', 'last_name', 'username']),
+                'data' => User::all(['id', 'firstName', 'lastName', 'username']),
             ]);
         }
         return response()->json([
@@ -39,8 +39,8 @@ class UserController extends Controller
      */
     public function update(Request $request, User $user)
     {
-        $user->first_name = $request->input('first_name');
-        $user->last_name = $request->input('last_name');
+        $user->first_name = $request->input('firstName');
+        $user->last_name = $request->input('lastName');
         $user->home_phone = $request->input('home_phone');
         if($user->save())
             return response()->json([

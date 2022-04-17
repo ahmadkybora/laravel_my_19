@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Auth\AuthController;
+use App\Http\Controllers\Panel\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -24,7 +25,7 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::get('/register', [AuthController::class, 'register'])->name('register');
 
 
-Route::middleware(['cors', 'auth:api'])->group(function () {
+Route::middleware([/*'cors', 'auth:api'*/])->group(function () {
     Route::namespace('Panel')->prefix('panel')->group(function () {
         Route::get('users/{id}', [UserController::class, 'show']);
         Route::get('users', [UserController::class, 'index']);
