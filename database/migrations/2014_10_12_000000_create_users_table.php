@@ -20,6 +20,7 @@ class CreateUsersTable extends Migration
             $table->string('firstName');
             $table->string('lastName');
             $table->string('username');
+            $table->string('mobile');
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
@@ -31,6 +32,7 @@ class CreateUsersTable extends Migration
         $user->firstName = "admin";
         $user->lastName = "admin";
         $user->username = "admin";
+        $user->mobile = 123456;
         $user->email = "admin@yahoo.com";
         $user->password = Hash::make("12345678");
         $user->save();
